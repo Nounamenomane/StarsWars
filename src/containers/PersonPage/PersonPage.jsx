@@ -26,7 +26,7 @@ function PersonPage() {
     }, [id]);
 
     return (
-        <div className={scss.wrapper}>
+        <div className={scss.wrapp}>
             <PersonLinkBack />
             <div className={scss.detail__info}>
                 <span className={scss.person__name}>{person.name}</span>
