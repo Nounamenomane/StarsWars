@@ -42,7 +42,7 @@ function PeoplePage() {
                 {status === "success" &&
                     main.map((el) => (
                         <li key={el.id} className={scss.list__item}>
-                            <NavLink to={`/people/${el.id}`}>
+                            <NavLink to={`/person/${el.id}`}>
                                 {/* Используйте NavLink для создания ссылок с соответствующим URL */}
                                 <img className={scss.person__photo} src={el.img} alt="" />
                                 <p>{el.name}</p>
