@@ -5,6 +5,7 @@ import scss from "./PeoplePage.module.scss";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import { getApi } from "../../redux/CreateAsyncThunk";
 import { useQueryParams } from "../../components/hooks/UseQueryParams";
+import UiLoading from "../../components/UiLoading/UiLoading";
 
 function PeoplePage() {
     const main = useSelector((state) => state.main.main);
@@ -37,7 +38,7 @@ function PeoplePage() {
                 <button className={scss.button} onClick={() => handlePageChange(pageNumber + 1)} disabled={pageNumber === 9}>Вперед</button>
             </div>
             <ul className={scss.list__container}>
-                {status === "loading" && !error && <h2 className={scss.loading}>Загрузка...</h2>}
+                {status === "loading" && !error && <h2 className={scss.loading}><UiLoading /></h2>}
                 {error && <ErrorMessage />}
                 {status === "success" &&
                     main.map((el) => (

@@ -1,13 +1,17 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getPeopleImage } from '../../services/getPeopleData';
 import scss from './PersonPage.module.scss'
 import PersonLinkBack from '../../components/PersonLinkBack/PersonLinkBack';
+import UiLoading from '../../components/UiLoading/UiLoading';
+import PersonFilms from '../../components/PersonFilms/PersonFilms';
+
 
 function PersonPage() {
     const [person, setPerson] = useState({});
     const [personPhoto, setPersonPhoto] = useState(null);
+    const [personFilms, setPersonFilms] = useState(null);
     const { id } = useParams();
 
     useEffect(() => {
@@ -15,7 +19,7 @@ function PersonPage() {
             try {
                 const response = await axios.get(`https://swapi.dev/api/people/${id}`);
                 setPerson(response.data);
-                console.log(response.data);
+                response.data.films.length && setPersonFilms(response.data.films)
             } catch (error) {
                 console.error('Error fetching person:', error);
             }
@@ -24,6 +28,7 @@ function PersonPage() {
         getPersonById();
         setPersonPhoto(getPeopleImage(id))
     }, [id]);
+
 
     return (
         <div className={scss.wrapp}>
@@ -47,6 +52,10 @@ function PersonPage() {
                             </li>
                         </ul>
                     </div>
+                    {personFilms && (
+                        <PersonFilms personFilms={personFilms} />
+                    )
+                    }
                 </div>
             </div>
         </div>
