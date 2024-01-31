@@ -1,8 +1,7 @@
 // CreateAsyncThunk.js
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { Api, ApiPerson } from "../api/Api";
+import { Api } from "../api/Api";
 import { getPeopleId, getPeopleImage } from "../services/getPeopleData";
-import { useState } from "react";
 
 
 export const getApi = createAsyncThunk(

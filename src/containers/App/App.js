@@ -6,6 +6,7 @@ import Header from '../../components/Header/Header';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import PersonPage from '../PersonPage/PersonPage';
 import FavoritePage from '../FavoritePage/FavoritePage';
+import SearchPage from '../SearchPage/SearchPage';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
         <Route path='/people' element={<PeoplePage />} />
         <Route path='/person/:id' element={<PersonPage />} />
         <Route path='/favorite' element={<FavoritePage />} />
+        <Route path='/search' element={<SearchPage />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
     </div>

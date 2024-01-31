@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import scss from "./PeoplePage.module.scss";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import { getApi } from "../../redux/CreateAsyncThunk";
@@ -38,16 +38,16 @@ function PeoplePage() {
                 <button className={scss.button} onClick={() => handlePageChange(pageNumber + 1)} disabled={pageNumber === 9}>Вперед</button>
             </div>
             <ul className={scss.list__container}>
-                {status === "loading" && !error && <h2 className={scss.loading}><UiLoading /></h2>}
+                {status === "loading" && !error && <UiLoading />}
                 {error && <ErrorMessage />}
                 {status === "success" &&
                     main.map((el) => (
                         <li key={el.id} className={scss.list__item}>
-                            <NavLink to={`/person/${el.id}`}>
+                            <Link to={`/person/${el.id}`}>
                                 {/* Используйте NavLink для создания ссылок с соответствующим URL */}
                                 <img className={scss.person__photo} src={el.img} alt="" />
                                 <p>{el.name}</p>
-                            </NavLink>
+                            </Link>
                         </li>
                     ))}
             </ul>

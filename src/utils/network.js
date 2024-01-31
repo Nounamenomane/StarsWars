@@ -11,10 +11,26 @@ export const makeConcurrentRequest = async (url) => {
             return data;
         } catch (error) {
             // Handle fetch or JSON parsing errors
-            console.error("Error fetching data:", error);
+            console.error("Error fetching data:", error);   
             return null;
         }
     }));
 
     return res;
+}
+
+export const getApiResource = async (url) => {
+    try {
+        const res = await fetch(url);
+
+        if (!res.ok) {
+            console.error('Could not fetch.', res.status);
+            return false;
+        }
+
+        return await res.json();
+    } catch (error) {
+        console.error('Could not fetch.', error.message);
+        return false;
+    }
 }
