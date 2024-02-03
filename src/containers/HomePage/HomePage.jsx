@@ -1,10 +1,14 @@
 import React from 'react'
 import scss from './HomePage.module.scss'
+import ChooseSite from '../../components/HomePage/ChooseSite/ChooseSite'
 
 
 function HomePage() {
     return (
-        <div className="header__text">HomePage</div>
+        <>
+            <h1 className="header__text">HomePage</h1>
+            <ChooseSite />
+        </>
     )
 }
 

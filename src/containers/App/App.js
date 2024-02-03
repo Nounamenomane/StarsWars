@@ -7,6 +7,7 @@ import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import PersonPage from '../PersonPage/PersonPage';
 import FavoritePage from '../FavoritePage/FavoritePage';
 import SearchPage from '../SearchPage/SearchPage';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Route path='/person/:id' element={<PersonPage />} />
         <Route path='/favorite' element={<FavoritePage />} />
         <Route path='/search' element={<SearchPage />} />
+        <Route path='/fail' element={<ErrorMessage />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
     </div>
