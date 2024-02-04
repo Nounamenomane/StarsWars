@@ -30,3 +30,8 @@
   background-color: var(--color-white);
   box-shadow: var(--box-shadow-white);
 }
+@media (max-width: 700px) {
+  .container {
+    margin-left: 0;
+  }
+}

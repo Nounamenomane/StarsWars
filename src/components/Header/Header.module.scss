@@ -37,3 +37,46 @@
   object-fit: cover;
   object-position: center center;
 }
+.burger_menu,
+.cross__menu {
+  display: none;
+}
+@media (max-width: 700px) {
+  .list__container {
+    position: fixed;
+    top: 0;
+    left: -225px;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 220px;
+    height: 100%;
+    background-color: black;
+    z-index: 100;
+    border: 1px solid white;
+    border-top-right-radius: 20px;
+    box-shadow: 0 0 4px 4px rgba(227, 222, 222, 0.25);
+    transition: 0.3s linear;
+  }
+  .list__item {
+    margin: 20px 10px;
+  }
+  .burger_menu {
+    display: block;
+    width: 60px;
+    height: 60px;
+  }
+  .cross__menu {
+    display: flex;
+    width: 60px;
+    height: 60px;
+  }
+  .menu__left {
+    display: flex;
+    justify-content: end;
+    margin-left: auto;
+    align-items: end;
+  }
+  .active {
+    transform: translateX(100%);
+  }
+}

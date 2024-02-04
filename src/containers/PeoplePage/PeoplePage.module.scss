@@ -49,3 +49,9 @@
   border-color: var(--color-gray);
   cursor: auto;
 }
+
+@media (max-width: 700px) {
+  .list__container {
+    justify-content: center;
+  }
+}
