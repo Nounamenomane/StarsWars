@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import scss from './Header.module.scss';
 import Favorite from '../Favorite/Favorite';
@@ -6,10 +6,18 @@ import { THEME_DARK, THEME_LIGHT, THEME_NEITRAL, useTheme } from '../../context/
 import droid from './img/droid.svg'
 import lightsaber from './img/lightsaber.svg'
 import space from './img/space-station.svg'
+import burger_menu from './img/menu-bar.png'
+import { useClickOutside } from '../../hooks/useCLickOutside';
 
 function Header() {
 
     const [icon, setIcon] = useState(space)
+
+    const [isOpen, setOpen] = useState(false)
+
+    const menuRef = useRef(null)
+    useClickOutside(menuRef, () => setOpen(false))
+
 
     const isTheme = useTheme()
 
@@ -28,13 +36,16 @@ function Header() {
             {
                 <img className={scss.logo} src={icon} alt="" />
             }
-            <ul className={scss.list__container}>
-                <li><NavLink to="/">Home</NavLink></li>
-                <li><NavLink to='/people'>People</NavLink></li>
-                <li><NavLink to='/search'>Search</NavLink></li>
-                <li><NavLink to="/notFound">Not Found</NavLink></li>
-                <li><NavLink to="/fail">Fail</NavLink></li>
+            <ul ref={menuRef} className={`${scss.list__container} ${isOpen ? scss.active : ''}`}>
+                <li className={scss.list__item}><NavLink to="/">Home</NavLink></li>
+                <li className={scss.list__item}><NavLink to='/people'>People</NavLink></li>
+                <li className={scss.list__item}><NavLink to='/search'>Search</NavLink></li>
+                <li className={scss.list__item}><NavLink to="/notFound">Not Found</NavLink></li>
+                <li className={scss.list__item}><NavLink to="/fail">Fail</NavLink></li>
             </ul>
+            <div className={scss.menu__left}>
+                <img onClick={() => setOpen(!isOpen)} className={scss.burger_menu} src={burger_menu} />
+            </div>
             <Favorite />
         </div>
     );
