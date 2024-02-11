@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import scss from './Header.module.scss';
 import Favorite from '../Favorite/Favorite';
 import { THEME_DARK, THEME_LIGHT, THEME_NEITRAL, useTheme } from '../../context/ThemeProvider';
@@ -30,6 +30,21 @@ function Header() {
                 break;
         }
     }, [isTheme])
+
+    const location = useLocation();
+
+    const toggleMenu = () => {
+        setOpen(true);
+    };
+
+    const closeMenu = () => {
+        setOpen(false);
+    };
+
+    useEffect(() => {
+        // При каждом изменении маршрута (переходе на другую страницу), закрываем бургер-меню
+        closeMenu();
+    }, [location]);
 
     return (
         <div className={scss.container}>
